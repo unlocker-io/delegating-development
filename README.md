@@ -68,12 +68,11 @@ mechanism belongs in an adapter under `references/providers/`.
 
 ## License
 
-[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](LICENSE)
-(CC BY-NC-SA 4.0).
+[Creative Commons Attribution-ShareAlike 4.0 International](LICENSE) (CC BY-SA 4.0).
 
-In plain terms: use it, modify it, redistribute it — **as long as** you credit the source, do not
-use it for commercial purposes, and release any adaptation under this same license. That last
-clause is what keeps a derivative from being relicensed into something closed.
+Use it, modify it, redistribute it, including at work and inside commercial activity — on two
+conditions: credit the source, and release any adaptation under this same license. Share-alike is
+what keeps a derivative from being closed up or relicensed into a proprietary product.
 
-This is a *source-available* license, not an OSI open-source one. "Non-commercial" is inherently
-fuzzy at the edges; if your intended use sits near that line, ask rather than assume.
+Note that share-alike does not forbid charging for a copy; it makes doing so pointless, since
+whoever receives it may redistribute it freely under the same terms.
