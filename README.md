@@ -57,9 +57,23 @@ Symlinking means `git pull` is your update channel. `npx skills add` copies inst
 
 ## Contributing
 
-Issues and pull requests welcome. Keep `SKILL.md` provider-neutral — anything naming a specific
-tool, model, or vendor mechanism belongs in an adapter under `references/providers/`.
+This repository is a **public mirror**. The canonical source lives in a private upstream
+repository, and mirrored files (everything except `README.md` and `LICENSE`) are overwritten on
+each sync — so a change committed here directly would be lost.
+
+Issues and pull requests are still welcome: maintainers port accepted changes upstream, and the
+sync tool refuses to run when the mirror carries an unported change, so nothing is silently
+dropped. Keep `SKILL.md` provider-neutral — anything naming a specific tool, model, or vendor
+mechanism belongs in an adapter under `references/providers/`.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](LICENSE)
+(CC BY-NC-SA 4.0).
+
+In plain terms: use it, modify it, redistribute it — **as long as** you credit the source, do not
+use it for commercial purposes, and release any adaptation under this same license. That last
+clause is what keeps a derivative from being relicensed into something closed.
+
+This is a *source-available* license, not an OSI open-source one. "Non-commercial" is inherently
+fuzzy at the edges; if your intended use sits near that line, ask rather than assume.
