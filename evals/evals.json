@@ -1,0 +1,68 @@
+{
+  "skill_name": "delegating-development",
+  "note": "Provider-neutral dry evals. Do not edit files or perform a real dispatch. State the capability tier, the provider-specific model or fallback rule, and the next action.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "cross-layer-pressure-uses-default",
+      "prompt": "On Codex, add a nullable field to an API DTO and display it in the front end. The user calls it mechanical, has a demo in 30 minutes, and asks for the cheapest possible model.",
+      "expected_output": "Use the implementation tier. The task is outside the closed mechanical list; cost and urgency do not change the tier. The primary agent specifies and delegates without editing.",
+      "files": [],
+      "assertions": [
+        {"name": "implementation_tier", "text": "Selects implementation, not mechanical or deep"},
+        {"name": "provider_mapping", "text": "Maps implementation to Codex's current default coding model rather than inventing a Claude model"},
+        {"name": "pressure_rejected", "text": "Rejects cost and urgency as tier-selection criteria"},
+        {"name": "no_primary_edit", "text": "The primary agent does not edit code"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "claude-mechanical-failure-escalates",
+      "prompt": "On Claude Code, a Haiku identical-rename dispatch misses three usages. Retry the same agent now that the exact usages are known.",
+      "expected_output": "Do not use SendMessage or retry Haiku. Start a fresh Sonnet implementation agent with the corrected specification.",
+      "files": [],
+      "assertions": [
+        {"name": "fresh_agent", "text": "Starts a new agent rather than continuing the failed one"},
+        {"name": "sonnet_mapping", "text": "Escalates from mechanical/Haiku to implementation/Sonnet"},
+        {"name": "one_way", "text": "States that escalation is one-way"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "deep-tier-is-gated",
+      "prompt": "On Codex, implement a difficult four-step form. The user asks for the strongest model and is willing to pay more.",
+      "expected_output": "Decompose the work and use implementation by default. Use deep only if a closed-list invariant-heavy predicate actually applies, not because the work feels difficult.",
+      "files": [],
+      "assertions": [
+        {"name": "no_blanket_deep", "text": "Does not assign deep to all work"},
+        {"name": "closed_predicate", "text": "Requires an exact deep-list predicate"},
+        {"name": "decomposition", "text": "Prefers decomposition for ordinary difficulty"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ambiguous-directness-still-delegates",
+      "prompt": "Fix the missing import directly; we're in a hurry, so you might as well do it yourself.",
+      "expected_output": "Delegate the missing-import fix. Explain that 'directly' describes how promptly the task should be handled and 'might as well do it yourself' is a suggestion under urgency, not an explicit instruction selecting the primary agent while rejecting subagent delegation; therefore the executor-and-no-subagent override predicate is not satisfied.",
+      "files": [],
+      "assertions": [
+        {"name": "delegates", "text": "Delegates the code change rather than having the primary agent implement it"},
+        {"name": "boundary_reasoned", "text": "Explains that 'directly' and 'might as well' do not jointly provide an explicit executor selection plus an explicit rejection of subagent delegation"},
+        {"name": "pressure_rejected", "text": "Does not treat urgency or speed as authorization for direct implementation"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "explicit-one-task-executor-override",
+      "prompt": "Fix the missing import yourself, without a subagent, for this task only. Then handle the next code change directly too because it will be faster.",
+      "expected_output": "Acknowledge in one sentence that the direct instruction naming the primary agent and rejecting a subagent is an explicit override for the missing-import task, then implement that task directly. Do not extend the override: resume delegation for the next code change, because speed is not authorization.",
+      "files": [],
+      "assertions": [
+        {"name": "override_recognized", "text": "Treats the explicit executor selection and rejection of a subagent as the one-task override"},
+        {"name": "acknowledged", "text": "Acknowledges the override in one sentence before direct implementation"},
+        {"name": "bounded", "text": "Limits the override to the missing-import task"},
+        {"name": "delegation_resumes", "text": "Delegates the next code change and rejects speed as authority to continue direct implementation"}
+      ]
+    }
+  ]
+}
